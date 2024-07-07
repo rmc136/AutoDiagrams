@@ -1,0 +1,18 @@
+<!-- api/templates/upload_success.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Successful</title>
+</head>
+<body>
+    <h2>Upload Successful!</h2>
+    {% if diagram_path %}
+        <img src="{{ diagram_path }}" alt="Class Diagram">
+    {% else %}
+        <p>No diagram generated.</p>
+    {% endif %}
+</body>
+</html>
