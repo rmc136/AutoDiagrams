@@ -5,3 +5,4 @@ drf-yasg==1.20.0   # Optional: Include only if you need Swagger/OpenAPI support
 pytz==2021.1       # Django typically needs this for timezone support
 PyYAML
 Graphviz
+pillow

@@ -12,7 +12,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import YAMLUploadForm
-from .utils import generate_class_diagram
+from .utils import get_EA_diagram
 
 class UploadYAMLView(APIView):
     def post(self, request):
@@ -78,16 +78,17 @@ def upload_yaml_view(request):
             if not yaml_file.name.endswith(('.yaml', '.yml')):
                 form.add_error('yaml_file', 'File must be in YAML format (.yaml or .yml)')
             else:
-                # Generate class diagram
-                diagram_path = generate_class_diagram(yaml_file)
-                # You may want to save the diagram_path to a model or session for later use
-                return HttpResponseRedirect(reverse('upload_success'))
+                # Generate class diagram and save it to the database
+                diagram = get_EA_diagram(yaml_file)
+
+                # Redirect to the success view with the diagram ID
+                return HttpResponseRedirect(reverse('upload_success', args=[diagram.id]))
     else:
         form = YAMLUploadForm()
     
     return render(request, 'upload_yaml.html', {'form': form})
 
-def upload_success_view(request):
-    # Assuming diagram_path is saved in a model or session
-    diagram_path = '/path/to/generated/diagram.png'  # Replace with actual path
-    return render(request, 'upload_success.html', {'diagram_path': diagram_path})
+def upload_success_view(request, diagram_id):
+    # Fetch the diagram from the database using the ID
+    diagram = Diagram.objects.get(id=diagram_id)
+    return render(request, 'upload_success.html', {'diagram_path': diagram.image.url})
