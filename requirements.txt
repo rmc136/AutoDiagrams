@@ -1,5 +1,0 @@
-django-restframework==3.9.4
-PyYAML==5.1
-Graphviz == 0.10.1
-setuptools==41.0.1
-drf-yasg==1.17.1
