@@ -11,17 +11,20 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header bg-success text-white">
-                <h2 class="card-title">Upload Successful!</h2>
+                <h2 class="card-title">Diagram Generated Successfully!</h2>
             </div>
             <div class="card-body">
                 {% if diagram_path %}
                     <img src="{{ diagram_path }}" alt="Class Diagram" class="img-fluid">
+                    <p class="text-success">Download the diagram <a href="{{ diagram_path }}" download>here</a>.</p>
                 {% else %}
                     <p class="text-danger">No diagram generated.</p>
                 {% endif %}
             </div>
             <div class="card-footer">
                 <a href="/" class="btn btn-primary">Go Back</a>
+                <!-- button to regenerate diagram -->
+                <a href="{% url 'regenerate_diagram' diagram_id %}" class="btn btn-warning">Regenerate Diagram</a>
             </div>
         </div>
     </div>

@@ -78,9 +78,9 @@ def upload_yaml_view(request):
             if not yaml_file.name.endswith(('.yaml', '.yml')):
                 form.add_error('yaml_file', 'File must be in YAML format (.yaml or .yml)')
             else:
-                # Generate class diagram and save it to the database
+                # Generate class diagram and save it to the database with the yaml file content
                 diagram = get_EA_diagram(yaml_file)
-
+                
                 # Redirect to the success view with the diagram ID
                 return HttpResponseRedirect(reverse('upload_success', args=[diagram.id]))
     else:
@@ -91,4 +91,13 @@ def upload_yaml_view(request):
 def upload_success_view(request, diagram_id):
     # Fetch the diagram from the database using the ID
     diagram = Diagram.objects.get(id=diagram_id)
-    return render(request, 'upload_success.html', {'diagram_path': diagram.image.url})
+    yaml_content = diagram.file
+    return render(request, 'upload_success.html', {'diagram_path': diagram.image.url, 'yaml_content': yaml_content, 'diagram_id': diagram_id})
+
+def regenerate_diagram_view(request, diagram_id):
+    # Fetch the diagram from the database using the ID
+    diagram = Diagram.objects.get(id=diagram_id)
+    yaml_content = diagram.file
+    diagram.delete()
+    diagram = get_EA_diagram(yaml_content)
+    return HttpResponseRedirect(reverse('upload_success', args=[diagram.id]))

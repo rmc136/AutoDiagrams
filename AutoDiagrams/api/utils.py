@@ -38,6 +38,7 @@ def get_EA_diagram(yaml_file):
     # Save the image to the database
     diagram_content = yaml_file.name.split('.')[0]
     diagram = Diagram(content=diagram_content)
+    diagram.file.save(yaml_file.name, yaml_file)
     diagram.image.save(f'{diagram_content}.png', ContentFile(image_data))
     diagram.save()
 

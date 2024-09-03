@@ -7,3 +7,4 @@ class Diagram(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='diagrams/', null=True, blank=True)
+    file = models.FileField(upload_to='yaml_files', null=True, blank=True)

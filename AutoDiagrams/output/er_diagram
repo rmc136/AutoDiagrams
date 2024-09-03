@@ -1,0 +1,169 @@
+digraph {
+	rankdir=BT
+	utilizador
+	nome
+	utilizador -> nome
+	mail
+	utilizador -> mail
+	id
+	utilizador -> id
+	tipo_conta
+	utilizador -> tipo_conta
+	conta_ativa
+	utilizador -> conta_ativa
+	conta_civil
+	morada
+	conta_civil -> morada
+	genero
+	conta_civil -> genero
+	nome
+	conta_civil -> nome
+	nif
+	conta_civil -> nif
+	telemovel
+	conta_civil -> telemovel
+	ano_nascimento
+	conta_civil -> ano_nascimento
+	id
+	conta_civil -> id
+	identificacao_civil
+	conta_civil -> identificacao_civil
+	"Nova password"
+	conta_civil -> "Nova password"
+	conta_ativa
+	conta_civil -> conta_ativa
+	conta_policia
+	password
+	conta_policia -> password
+	conta_ativa
+	conta_policia -> conta_ativa
+	nome
+	conta_policia -> nome
+	id_interno
+	conta_policia -> id_interno
+	id
+	conta_policia -> id
+	posto_id
+	conta_policia -> posto_id
+	objeto
+	id
+	objeto -> id
+	id_categoria
+	objeto -> id_categoria
+	tipo
+	objeto -> tipo
+	descricao
+	objeto -> descricao
+	objeto_perdido
+	id_local_perdido
+	objeto_perdido -> id_local_perdido
+	id_categoria
+	objeto_perdido -> id_categoria
+	tipo
+	objeto_perdido -> tipo
+	id_dono
+	objeto_perdido -> id_dono
+	descricao
+	objeto_perdido -> descricao
+	devolvido
+	objeto_perdido -> devolvido
+	encontrado
+	objeto_perdido -> encontrado
+	id
+	objeto_perdido -> id
+	intervalo_data_perdido
+	objeto_perdido -> intervalo_data_perdido
+	objeto_achado
+	comprado
+	objeto_achado -> comprado
+	tipo
+	objeto_achado -> tipo
+	expirou
+	objeto_achado -> expirou
+	encontrado_dono
+	objeto_achado -> encontrado_dono
+	intervalo_data_achado
+	objeto_achado -> intervalo_data_achado
+	inLeilao
+	objeto_achado -> inLeilao
+	descricao
+	objeto_achado -> descricao
+	id_pessoa
+	objeto_achado -> id_pessoa
+	id_possivel_donos
+	objeto_achado -> id_possivel_donos
+	devolvido
+	objeto_achado -> devolvido
+	id_local_achado
+	objeto_achado -> id_local_achado
+	id_categoria
+	objeto_achado -> id_categoria
+	id
+	objeto_achado -> id
+	id_civil_pessoa
+	objeto_achado -> id_civil_pessoa
+	data_expira
+	objeto_achado -> data_expira
+	categoria
+	id
+	categoria -> id
+	nome
+	categoria -> nome
+	subcategoria
+	id
+	subcategoria -> id
+	detalhes
+	subcategoria -> detalhes
+	nome
+	subcategoria -> nome
+	id_categoria
+	subcategoria -> id_categoria
+	local
+	distrito
+	local -> distrito
+	freguesia
+	local -> freguesia
+	rua
+	local -> rua
+	municipio
+	local -> municipio
+	numero_porta
+	local -> numero_porta
+	pais
+	local -> pais
+	id
+	local -> id
+	codigo_postal
+	local -> codigo_postal
+	posto
+	id
+	posto -> id
+	id_local
+	posto -> id_local
+	leilao
+	inicio
+	leilao -> inicio
+	duracao
+	leilao -> duracao
+	id_licitacao_atual
+	leilao -> id_licitacao_atual
+	estado
+	leilao -> estado
+	preco_inicial
+	leilao -> preco_inicial
+	id
+	leilao -> id
+	id_objeto
+	leilao -> id_objeto
+	licitacao
+	id_licitante
+	licitacao -> id_licitante
+	data
+	licitacao -> data
+	id_leilao
+	licitacao -> id_leilao
+	montante
+	licitacao -> montante
+	id
+	licitacao -> id
+}
