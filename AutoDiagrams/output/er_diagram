@@ -1,169 +1,217 @@
 digraph {
-	rankdir=BT
-	utilizador
-	nome
-	utilizador -> nome
-	mail
-	utilizador -> mail
-	id
-	utilizador -> id
-	tipo_conta
-	utilizador -> tipo_conta
-	conta_ativa
-	utilizador -> conta_ativa
-	conta_civil
-	morada
-	conta_civil -> morada
-	genero
-	conta_civil -> genero
-	nome
-	conta_civil -> nome
-	nif
-	conta_civil -> nif
-	telemovel
-	conta_civil -> telemovel
-	ano_nascimento
-	conta_civil -> ano_nascimento
-	id
-	conta_civil -> id
-	identificacao_civil
-	conta_civil -> identificacao_civil
-	"Nova password"
-	conta_civil -> "Nova password"
-	conta_ativa
-	conta_civil -> conta_ativa
-	conta_policia
-	password
-	conta_policia -> password
-	conta_ativa
-	conta_policia -> conta_ativa
-	nome
-	conta_policia -> nome
-	id_interno
-	conta_policia -> id_interno
-	id
-	conta_policia -> id
-	posto_id
-	conta_policia -> posto_id
-	objeto
-	id
-	objeto -> id
-	id_categoria
-	objeto -> id_categoria
-	tipo
-	objeto -> tipo
-	descricao
-	objeto -> descricao
-	objeto_perdido
-	id_local_perdido
-	objeto_perdido -> id_local_perdido
-	id_categoria
-	objeto_perdido -> id_categoria
-	tipo
-	objeto_perdido -> tipo
-	id_dono
-	objeto_perdido -> id_dono
-	descricao
-	objeto_perdido -> descricao
-	devolvido
-	objeto_perdido -> devolvido
-	encontrado
-	objeto_perdido -> encontrado
-	id
-	objeto_perdido -> id
-	intervalo_data_perdido
-	objeto_perdido -> intervalo_data_perdido
-	objeto_achado
-	comprado
-	objeto_achado -> comprado
-	tipo
-	objeto_achado -> tipo
-	expirou
-	objeto_achado -> expirou
-	encontrado_dono
-	objeto_achado -> encontrado_dono
-	intervalo_data_achado
-	objeto_achado -> intervalo_data_achado
-	inLeilao
-	objeto_achado -> inLeilao
-	descricao
-	objeto_achado -> descricao
-	id_pessoa
-	objeto_achado -> id_pessoa
-	id_possivel_donos
-	objeto_achado -> id_possivel_donos
-	devolvido
-	objeto_achado -> devolvido
-	id_local_achado
-	objeto_achado -> id_local_achado
-	id_categoria
-	objeto_achado -> id_categoria
-	id
-	objeto_achado -> id
-	id_civil_pessoa
-	objeto_achado -> id_civil_pessoa
-	data_expira
-	objeto_achado -> data_expira
-	categoria
-	id
-	categoria -> id
-	nome
-	categoria -> nome
-	subcategoria
-	id
-	subcategoria -> id
-	detalhes
-	subcategoria -> detalhes
-	nome
-	subcategoria -> nome
-	id_categoria
-	subcategoria -> id_categoria
-	local
-	distrito
-	local -> distrito
-	freguesia
-	local -> freguesia
-	rua
-	local -> rua
-	municipio
-	local -> municipio
-	numero_porta
-	local -> numero_porta
-	pais
-	local -> pais
-	id
-	local -> id
-	codigo_postal
-	local -> codigo_postal
-	posto
-	id
-	posto -> id
-	id_local
-	posto -> id_local
-	leilao
-	inicio
-	leilao -> inicio
-	duracao
-	leilao -> duracao
-	id_licitacao_atual
-	leilao -> id_licitacao_atual
-	estado
-	leilao -> estado
-	preco_inicial
-	leilao -> preco_inicial
-	id
-	leilao -> id
-	id_objeto
-	leilao -> id_objeto
-	licitacao
-	id_licitante
-	licitacao -> id_licitante
-	data
-	licitacao -> data
-	id_leilao
-	licitacao -> id_leilao
-	montante
-	licitacao -> montante
-	id
-	licitacao -> id
+	nodesep=0.75 rankdir=LR ranksep=0.75
+	utilizador [shape=rect style=filled]
+	utilizador -> utilizador_mail
+	utilizador -> utilizador_nome
+	utilizador -> utilizador_id
+	utilizador -> utilizador_tipo_conta
+	utilizador -> utilizador_conta_ativa
+	{
+		rank=same
+		label="utilizador Attributes" style=dashed
+		utilizador_mail [shape=ellipse]
+		utilizador_nome [shape=ellipse]
+		utilizador_id [shape=ellipse]
+		utilizador_tipo_conta [shape=ellipse]
+		utilizador_conta_ativa [shape=ellipse]
+	}
+	conta_civil [shape=rect style=filled]
+	conta_civil -> conta_civil_genero
+	conta_civil -> conta_civil_ano_nascimento
+	conta_civil -> conta_civil_telemovel
+	conta_civil -> "conta_civil_Nova password"
+	conta_civil -> conta_civil_identificacao_civil
+	conta_civil -> conta_civil_nif
+	conta_civil -> conta_civil_nome
+	conta_civil -> conta_civil_id
+	conta_civil -> conta_civil_conta_ativa
+	conta_civil -> conta_civil_morada
+	{
+		rank=same
+		label="conta_civil Attributes" style=dashed
+		conta_civil_genero [shape=ellipse]
+		conta_civil_ano_nascimento [shape=ellipse]
+		conta_civil_telemovel [shape=ellipse]
+		"conta_civil_Nova password" [shape=ellipse]
+		conta_civil_identificacao_civil [shape=ellipse]
+		conta_civil_nif [shape=ellipse]
+		conta_civil_nome [shape=ellipse]
+		conta_civil_id [shape=ellipse]
+		conta_civil_conta_ativa [shape=ellipse]
+		conta_civil_morada [shape=ellipse]
+	}
+	conta_policia [shape=rect style=filled]
+	conta_policia -> conta_policia_id_interno
+	conta_policia -> conta_policia_password
+	conta_policia -> conta_policia_posto_id
+	conta_policia -> conta_policia_nome
+	conta_policia -> conta_policia_id
+	conta_policia -> conta_policia_conta_ativa
+	{
+		rank=same
+		label="conta_policia Attributes" style=dashed
+		conta_policia_id_interno [shape=ellipse]
+		conta_policia_password [shape=ellipse]
+		conta_policia_posto_id [shape=ellipse]
+		conta_policia_nome [shape=ellipse]
+		conta_policia_id [shape=ellipse]
+		conta_policia_conta_ativa [shape=ellipse]
+	}
+	objeto [shape=rect style=filled]
+	objeto -> objeto_id
+	objeto -> objeto_descricao
+	objeto -> objeto_tipo
+	objeto -> objeto_id_categoria
+	{
+		rank=same
+		label="objeto Attributes" style=dashed
+		objeto_id [shape=ellipse]
+		objeto_descricao [shape=ellipse]
+		objeto_tipo [shape=ellipse]
+		objeto_id_categoria [shape=ellipse]
+	}
+	objeto_perdido [shape=rect style=filled]
+	objeto_perdido -> objeto_perdido_intervalo_data_perdido
+	objeto_perdido -> objeto_perdido_id_dono
+	objeto_perdido -> objeto_perdido_id
+	objeto_perdido -> objeto_perdido_id_categoria
+	objeto_perdido -> objeto_perdido_descricao
+	objeto_perdido -> objeto_perdido_tipo
+	objeto_perdido -> objeto_perdido_devolvido
+	objeto_perdido -> objeto_perdido_id_local_perdido
+	objeto_perdido -> objeto_perdido_encontrado
+	{
+		rank=same
+		label="objeto_perdido Attributes" style=dashed
+		objeto_perdido_intervalo_data_perdido [shape=ellipse]
+		objeto_perdido_id_dono [shape=ellipse]
+		objeto_perdido_id [shape=ellipse]
+		objeto_perdido_id_categoria [shape=ellipse]
+		objeto_perdido_descricao [shape=ellipse]
+		objeto_perdido_tipo [shape=ellipse]
+		objeto_perdido_devolvido [shape=ellipse]
+		objeto_perdido_id_local_perdido [shape=ellipse]
+		objeto_perdido_encontrado [shape=ellipse]
+	}
+	objeto_achado [shape=rect style=filled]
+	objeto_achado -> objeto_achado_data_expira
+	objeto_achado -> objeto_achado_id_pessoa
+	objeto_achado -> objeto_achado_inLeilao
+	objeto_achado -> objeto_achado_encontrado_dono
+	objeto_achado -> objeto_achado_id_civil_pessoa
+	objeto_achado -> objeto_achado_id_local_achado
+	objeto_achado -> objeto_achado_intervalo_data_achado
+	objeto_achado -> objeto_achado_expirou
+	objeto_achado -> objeto_achado_id
+	objeto_achado -> objeto_achado_id_categoria
+	objeto_achado -> objeto_achado_descricao
+	objeto_achado -> objeto_achado_tipo
+	objeto_achado -> objeto_achado_devolvido
+	objeto_achado -> objeto_achado_id_possivel_donos
+	objeto_achado -> objeto_achado_comprado
+	{
+		rank=same
+		label="objeto_achado Attributes" style=dashed
+		objeto_achado_data_expira [shape=ellipse]
+		objeto_achado_id_pessoa [shape=ellipse]
+		objeto_achado_inLeilao [shape=ellipse]
+		objeto_achado_encontrado_dono [shape=ellipse]
+		objeto_achado_id_civil_pessoa [shape=ellipse]
+		objeto_achado_id_local_achado [shape=ellipse]
+		objeto_achado_intervalo_data_achado [shape=ellipse]
+		objeto_achado_expirou [shape=ellipse]
+		objeto_achado_id [shape=ellipse]
+		objeto_achado_id_categoria [shape=ellipse]
+		objeto_achado_descricao [shape=ellipse]
+		objeto_achado_tipo [shape=ellipse]
+		objeto_achado_devolvido [shape=ellipse]
+		objeto_achado_id_possivel_donos [shape=ellipse]
+		objeto_achado_comprado [shape=ellipse]
+	}
+	categoria [shape=rect style=filled]
+	categoria -> categoria_nome
+	categoria -> categoria_id
+	{
+		rank=same
+		label="categoria Attributes" style=dashed
+		categoria_nome [shape=ellipse]
+		categoria_id [shape=ellipse]
+	}
+	subcategoria [shape=rect style=filled]
+	subcategoria -> subcategoria_nome
+	subcategoria -> subcategoria_id
+	subcategoria -> subcategoria_id_categoria
+	subcategoria -> subcategoria_detalhes
+	{
+		rank=same
+		label="subcategoria Attributes" style=dashed
+		subcategoria_nome [shape=ellipse]
+		subcategoria_id [shape=ellipse]
+		subcategoria_id_categoria [shape=ellipse]
+		subcategoria_detalhes [shape=ellipse]
+	}
+	local [shape=rect style=filled]
+	local -> local_freguesia
+	local -> local_distrito
+	local -> local_numero_porta
+	local -> local_municipio
+	local -> local_pais
+	local -> local_id
+	local -> local_rua
+	local -> local_codigo_postal
+	{
+		rank=same
+		label="local Attributes" style=dashed
+		local_freguesia [shape=ellipse]
+		local_distrito [shape=ellipse]
+		local_numero_porta [shape=ellipse]
+		local_municipio [shape=ellipse]
+		local_pais [shape=ellipse]
+		local_id [shape=ellipse]
+		local_rua [shape=ellipse]
+		local_codigo_postal [shape=ellipse]
+	}
+	posto [shape=rect style=filled]
+	posto -> posto_id
+	posto -> posto_id_local
+	{
+		rank=same
+		label="posto Attributes" style=dashed
+		posto_id [shape=ellipse]
+		posto_id_local [shape=ellipse]
+	}
+	leilao [shape=rect style=filled]
+	leilao -> leilao_inicio
+	leilao -> leilao_id_objeto
+	leilao -> leilao_id
+	leilao -> leilao_estado
+	leilao -> leilao_duracao
+	leilao -> leilao_preco_inicial
+	leilao -> leilao_id_licitacao_atual
+	{
+		rank=same
+		label="leilao Attributes" style=dashed
+		leilao_inicio [shape=ellipse]
+		leilao_id_objeto [shape=ellipse]
+		leilao_id [shape=ellipse]
+		leilao_estado [shape=ellipse]
+		leilao_duracao [shape=ellipse]
+		leilao_preco_inicial [shape=ellipse]
+		leilao_id_licitacao_atual [shape=ellipse]
+	}
+	licitacao [shape=rect style=filled]
+	licitacao -> licitacao_id_licitante
+	licitacao -> licitacao_montante
+	licitacao -> licitacao_id
+	licitacao -> licitacao_data
+	licitacao -> licitacao_id_leilao
+	{
+		rank=same
+		label="licitacao Attributes" style=dashed
+		licitacao_id_licitante [shape=ellipse]
+		licitacao_montante [shape=ellipse]
+		licitacao_id [shape=ellipse]
+		licitacao_data [shape=ellipse]
+		licitacao_id_leilao [shape=ellipse]
+	}
 }

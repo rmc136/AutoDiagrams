@@ -97,7 +97,14 @@ def upload_success_view(request, diagram_id):
 def regenerate_diagram_view(request, diagram_id):
     # Fetch the diagram from the database using the ID
     diagram = Diagram.objects.get(id=diagram_id)
-    yaml_content = diagram.file
+
+    # Read YAML file content
+    yaml_content = diagram.file.read()
+
+    # Delete old diagram
     diagram.delete()
-    diagram = get_EA_diagram(yaml_content)
-    return HttpResponseRedirect(reverse('upload_success', args=[diagram.id]))
+
+    # Generate new diagram
+    regenerated_diagram = get_EA_diagram(yaml_content)
+
+    return HttpResponseRedirect(reverse('upload_success', args=[regenerated_diagram.id]))

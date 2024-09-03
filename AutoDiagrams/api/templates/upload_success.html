@@ -16,13 +16,13 @@
             <div class="card-body">
                 {% if diagram_path %}
                     <img src="{{ diagram_path }}" alt="Class Diagram" class="img-fluid">
-                    <p class="text-success">Download the diagram <a href="{{ diagram_path }}" download>here</a>.</p>
                 {% else %}
                     <p class="text-danger">No diagram generated.</p>
                 {% endif %}
             </div>
             <div class="card-footer">
                 <a href="/" class="btn btn-primary">Go Back</a>
+                <a href="{{ diagram_path }}" class="btn btn-primary" download>Download</a>
                 <!-- button to regenerate diagram -->
                 <a href="{% url 'regenerate_diagram' diagram_id %}" class="btn btn-warning">Regenerate Diagram</a>
             </div>

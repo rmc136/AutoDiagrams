@@ -5,26 +5,45 @@ from .models import Diagram
 from django.core.files.base import ContentFile
 
 
+from graphviz import Digraph
+import yaml
+from django.core.files.base import ContentFile
+import os
+
 def get_EA_diagram(yaml_file):
+    # Read file content if it's a FileField
+    if hasattr(yaml_file, 'read'):
+        yaml_file_content = yaml_file.read()
+    else:
+        yaml_file_content = yaml_file
+
     # Load YAML data
-    yaml_data = yaml.safe_load(yaml_file)
+    yaml_data = yaml.safe_load(yaml_file_content)
 
     # Initialize Graphviz Digraph object
     dot = Digraph(format='png')
-    dot.attr(rankdir='BT')
+    dot.attr(rankdir='LR', nodesep='0.75', ranksep='0.75')
 
-    # Process YAML data and add nodes and edges to the diagram
+    # Get classes and their attributes
     classes = get_classes(yaml_data)
-    attributes = []
-    for class_name in classes:
-        attributes.append(get_attributes(yaml_data, class_name))
+    class_attributes = {cls: get_attributes(yaml_data, cls) for cls in classes}
 
-    class_attributes = dict(zip(classes, attributes))
-    for class_name, class_attrs in class_attributes.items():
-        dot.node(class_name)
-        for attribute in class_attrs:
-            dot.node(attribute)
-            dot.edge(class_name, attribute)
+    # Create nodes for each class and its attributes
+    for class_name, attrs in class_attributes.items():
+        # Add the class node
+        dot.node(class_name, shape='rect', style='filled')
+
+        # Add a subgraph (cluster) for the class's attributes
+        with dot.subgraph() as s:
+            s.attr(rank='same')
+            s.attr(label=f'{class_name} Attributes', style='dashed')
+
+            # Add attribute nodes within the subgraph
+            for attribute in attrs:
+                attribute_node_name = f"{class_name}_{attribute}"
+                s.node(attribute_node_name, shape='ellipse')
+                # Add edges from class to its attributes
+                dot.edge(class_name, attribute_node_name)
 
     # Save the diagram to a temporary location
     output_path = 'output/er_diagram'
@@ -35,18 +54,22 @@ def get_EA_diagram(yaml_file):
     with open(output_image_path, 'rb') as f:
         image_data = f.read()
 
+    # Create a unique filename for the YAML file and image
+    yaml_filename = 'diagram.yaml'  # or another unique name
+    image_filename = f'{yaml_filename.split(".")[0]}.png'
+
     # Save the image to the database
-    diagram_content = yaml_file.name.split('.')[0]
+    diagram_content = yaml_file_content.decode('utf-8') if hasattr(yaml_file_content, 'decode') else yaml_file_content
     diagram = Diagram(content=diagram_content)
-    diagram.file.save(yaml_file.name, yaml_file)
-    diagram.image.save(f'{diagram_content}.png', ContentFile(image_data))
+    diagram.file.save(yaml_filename, ContentFile(yaml_file_content))  # Use ContentFile to save file
+    diagram.image.save(image_filename, ContentFile(image_data))
     diagram.save()
 
+    # Clean up the temporary file
     if os.path.exists(output_image_path):
         os.remove(output_image_path)
 
     return diagram
-    
 
 def get_classes(yaml_data):
     # Get class names from the YAML data
@@ -58,7 +81,6 @@ def get_classes(yaml_data):
     return classes
 
 def get_attributes(yaml_data, class_name):
-
     # Get attributes of a class from the YAML data
     attributes = set()
     for path, methods in yaml_data.get('paths', {}).items():
@@ -72,5 +94,4 @@ def get_attributes(yaml_data, class_name):
                         properties = content.get('schema', {}).get('properties', {})
                         for prop_name in properties.keys():
                             attributes.add(prop_name)
-    attributes = list(attributes)
-    return attributes
+    return list(attributes)
