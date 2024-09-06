@@ -1,0 +1,2588 @@
+---
+openapi: 3.0.0
+info:
+  title: Perdidos-e-Achados-API
+  description: API para Perdidos e Achados
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/JOAO2001BABO/Perdidos_e_Achados/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://virtserver.swaggerhub.com/ESQUILINHO99/PerdidosAchadosAPI/1.0.0
+tags:
+- name: utilizador
+- name: conta_civil
+- name: conta_policia
+- name: objeto
+- name: objeto_perdido
+- name: objeto_achado
+- name: categoria
+- name: subcategoria
+- name: local
+- name: posto
+- name: leilao
+- name: licitacao
+paths:
+  /utilizador:
+    get:
+      tags:
+      - utilizador
+      summary: Get todos os Utilizadores
+      description: Get todos os utilizadores
+      parameters:
+      - name: id
+        in: query
+        description: ID do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: mail
+        in: query
+        description: mail do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nome
+        in: query
+        description: nome do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: conta_ativa
+        in: query
+        description: conta do utilizador está ativa ou não
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: tipo_conta
+        in: query
+        description: tipo de conta do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Utilizadores encontrados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/utilizador'
+        "404":
+          description: Utilizadores não encontrado
+        "500":
+          description: Erro de servidor
+  /utilizador/{id}:
+    get:
+      tags:
+      - utilizador
+      summary: Get Utilizador pelo ID
+      description: Operacao para encontrar utlizador pelo o seu ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: utilizador encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/utilizador'
+        "404":
+          description: Utilizador não encontrado
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - utilizador
+      summary: Apagar Utilizador pelo ID
+      description: Apagar um conta de utilizador
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: conta utilizador apagada
+        "404":
+          description: Utilizador não encontrado
+        "500":
+          description: Erro de servidor
+  /utilizador/ativar/{id}:
+    patch:
+      tags:
+      - utilizador
+      summary: Ativar conta pelo id
+      description: Operacao para ativar conta de utilizador pelo id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ativar_id_body'
+        required: true
+      responses:
+        "200":
+          description: Conta de utilizador ativada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/utilizador'
+        "404":
+          description: Utilizador não encontrado
+        "500":
+          description: Erro de servidor
+  /utilizador/desativar/{id}:
+    patch:
+      tags:
+      - utilizador
+      summary: Desativar conta pelo id
+      description: Operacao para desativar conta de utilizador pelo id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/desativar_id_body'
+        required: true
+      responses:
+        "200":
+          description: Conta de utilizador desativada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/utilizador'
+        "404":
+          description: Utilizador não encontrado
+        "500":
+          description: Erro de servidor
+  /admin:
+    get:
+      tags:
+      - admin
+      summary: Get todos Admins
+      description: Operacao para encontrar todos os admins
+      parameters:
+      - name: id
+        in: query
+        description: id admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: conta_ativa
+        in: query
+        description: se a conta está ativa ou não
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: nome
+        in: query
+        description: nome do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: genero
+        in: query
+        description: género do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ano_nascimento
+        in: query
+        description: ano de nascimento do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: morada
+        in: query
+        description: morada do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nif
+        in: query
+        description: NIF do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: identificacao_civil
+        in: query
+        description: identificação civil do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: telemovel
+        in: query
+        description: número de telemóvel do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Admin não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/admin'
+        "404":
+          description: Admin não encontrado
+        "500":
+          description: Erro de servidor
+  /admin/{id}:
+    patch:
+      tags:
+      - admin
+      summary: Atualizar admin pelo ID
+      description: Operacao para atualizar dados admin
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: Nova password
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nome
+        in: query
+        description: Novo nome do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: genero
+        in: query
+        description: Novo género do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ano_nascimento
+        in: query
+        description: Novo ano de nascimento do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: morada
+        in: query
+        description: Nova morada do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nif
+        in: query
+        description: Novo NIF do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: identificacao_civil
+        in: query
+        description: Nova identificação civil do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: telemovel
+        in: query
+        description: Novo número de telemóvel do admin
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Dados do admin atualizados
+        "404":
+          description: admin não encontrado
+  /conta_civil:
+    get:
+      tags:
+      - conta_civil
+      summary: Get todas Contas Civil
+      description: Operacao para encontrar todas as contas civis
+      parameters:
+      - name: id
+        in: query
+        description: id conta civil
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: conta_ativa
+        in: query
+        description: se a conta está ativa ou não
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: nome
+        in: query
+        description: nome do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: genero
+        in: query
+        description: género do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ano_nascimento
+        in: query
+        description: ano de nascimento do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: morada
+        in: query
+        description: morada do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nif
+        in: query
+        description: NIF do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: identificacao_civil
+        in: query
+        description: identificação civil do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: telemovel
+        in: query
+        description: número de telemóvel do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Conta Civil não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/conta_civil'
+        "404":
+          description: Conta Civil não encontrada
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - conta_civil
+      summary: Criar conta civil
+      description: Operacao para criar nova conta_civil
+      requestBody:
+        description: estrututa de uma conta_civil
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/conta_civil'
+        required: true
+      responses:
+        "201":
+          description: conta civil criada
+        "400":
+          description: dados inválidos
+  /conta_civil/{id}:
+    get:
+      tags:
+      - conta_civil
+      summary: Get Conta Civil pelo ID
+      description: Operacao para encontrar conta_civil pelo o seu ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Conta Civil encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/conta_civil'
+        "404":
+          description: Conta Civil não encontrado
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - conta_civil
+      summary: Atualizar conta civil pelo ID
+      description: Operacao para atualizar dados na conta civil
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: Nova password
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nome
+        in: query
+        description: Novo nome do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: genero
+        in: query
+        description: Novo género do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ano_nascimento
+        in: query
+        description: Novo ano de nascimento do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: morada
+        in: query
+        description: Nova morada do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nif
+        in: query
+        description: Novo NIF do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: identificacao_civil
+        in: query
+        description: Nova identificação civil do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: telemovel
+        in: query
+        description: Novo número de telemóvel do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Dados da conta civil atualizados
+        "404":
+          description: Utilizador não encontrado
+  /conta_policia:
+    get:
+      tags:
+      - conta_policia
+      summary: Get todas Contas Policias
+      description: Operacao para encontrar todas as contas policias
+      parameters:
+      - name: id
+        in: query
+        description: id conta policia
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: conta_ativa
+        in: query
+        description: se a conta está ativa ou não
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: nome
+        in: query
+        description: nome do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_interno
+        in: query
+        description: id interno do policia
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: posto_id
+        in: query
+        description: id posto do policia
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Conta Civil não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/conta_civil'
+        "404":
+          description: Conta Civil não encontrada
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - conta_policia
+      summary: Criar conta policia
+      description: Operacao para criar nova conta_policia
+      requestBody:
+        description: estrututa de uma conta_policia
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/conta_policia'
+        required: true
+      responses:
+        "201":
+          description: conta policia criada
+        "400":
+          description: dados inválidos
+  /conta_policia/{id}:
+    get:
+      tags:
+      - conta_policia
+      summary: Get Conta Policia pelo ID
+      description: Operacao para encontrar conta policia pelo o seu ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Conta Policia encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/conta_policia'
+        "404":
+          description: Conta Policia não encontrado
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - conta_policia
+      summary: Atualizar dados conta policia
+      description: Operacao para atualizar dados na conta policia
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: password
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nome
+        in: query
+        description: Novo nome do utilizador
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_interno
+        in: query
+        description: Novo id interno policia
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: posto_id
+        in: query
+        description: Nova morada posto policia
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Dados da conta policia atualizados
+        "404":
+          description: Utilizador não encontrado
+  /objeto:
+    get:
+      tags:
+      - objeto
+      summary: Get todos Objetos
+      description: Operacao para encontrar todas as pessoas
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: tipo
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: descricao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_categoria
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Objeto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/objeto'
+        "404":
+          description: Objeto não encontrado
+        "500":
+          description: Erro de servidor
+  /objeto/{id}:
+    get:
+      tags:
+      - objeto
+      summary: Get objeto pelo ID
+      description: Operacao para encontrar objeto pelo o id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: objeto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "404":
+          description: Objeto não encontrado
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - objeto
+      summary: Apagar objeto pelo ID
+      description: Apagar um objeto
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: objeto apagado
+        "404":
+          description: Objeto não encontrado
+        "500":
+          description: Erro de servidor
+  /objeto_perdido:
+    get:
+      tags:
+      - objeto_perdido
+      summary: Get todos Objetos Perdidos
+      description: Procurar todos objetos perdidos de acordo com os parametros
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: tipo
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: descricao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_categoria
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: encontrado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: devolvido
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: id_dono
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_local_perdido
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: intervalo_data_perdido
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: objeto(s) encontrado(s)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/objeto_perdido'
+        "404":
+          description: Objeto não encontrado
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - objeto_perdido
+      summary: Criar Objeto Perdido
+      description: Operacao para criar novo objeto perdido
+      requestBody:
+        description: estrututa de um objeto perdido
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/objeto_perdido'
+        required: true
+      responses:
+        "201":
+          description: objeto perdido adicionado
+        "400":
+          description: dados inválidos
+  /objeto_perdido/{id}:
+    patch:
+      tags:
+      - objeto_perdido
+      summary: Atualizar Objeto Perdido pelo ID
+      description: Operacao para atualizar objeto_perdido pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: descricao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_categoria
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_local_perdido
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: intervalo_data_perdido
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Dados de objeto perdido atualizados
+        "404":
+          description: objeto não encontrado
+  /objeto_perdido/encontrado/{id}:
+    patch:
+      tags:
+      - objeto_perdido
+      summary: Dar um Objeto Perdido como encontrado pelo ID
+      description: Operacao para dar um objeto perdido como encontrado pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/encontrado_id_body'
+        required: true
+      responses:
+        "200":
+          description: Objeto perdido encontrado com sucesso
+        "404":
+          description: objeto não encontrado
+  /objeto_perdido/recebido/{id}:
+    patch:
+      tags:
+      - objeto_perdido
+      summary: Dar um Objeto Perdido como recebido pelo ID
+      description: Operacao para dar um objeto perdido como recebido pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/recebido_id_body'
+        required: true
+      responses:
+        "200":
+          description: Objeto perdido recebido com sucesso
+        "404":
+          description: objeto não encontrado
+  /objeto_achado:
+    get:
+      tags:
+      - objeto_achado
+      summary: Get todos Objetos Achados
+      description: Procurar todos objetos achados de acordo com os parametros
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: tipo
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: descricao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_categoria
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: encontrado_dono
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: devolvido
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: id_pessoa
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_local_achado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: intervalo_data_achado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: data_expira
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: expirou
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: id_possivel_donos
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: comprado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: inLeilao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: objeto(s) encontrado(s)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/objeto_achado'
+        "404":
+          description: Objeto não encontrado
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - objeto_achado
+      summary: Criar Objeto Achado
+      description: Operacao para criar novo objeto achado
+      requestBody:
+        description: estrututa de um objeto achado
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/objeto_achado'
+        required: true
+      responses:
+        "201":
+          description: objeto achado adicionado
+        "400":
+          description: dados inválidos
+  /objeto_achado/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Atualizar Objeto Achado pelo ID
+      description: Operacao para atualizar dados do objeto_achado
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: descricao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_civil_pessoa
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: id_local_achado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: intervalo_data_achado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Dados de objeto achado atualizados
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/devolvido/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Dar um Objeto Achado como devolvido pelo ID
+      description: Operacao para dar um objeto achado devolvido ao dono como recebido pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/devolvido_id_body'
+        required: true
+      responses:
+        "200":
+          description: Objeto achado devolvido com sucesso
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/encontrado_dono/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Dar como encontrado o dono do Objeto Achado pelo ID
+      description: Operacao para dar como encontrado o dono do Objeto Achado pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/encontrado_dono_id_body'
+        required: true
+      responses:
+        "200":
+          description: Dono do Objeto achado encontrado
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/expirou/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Dar como expirado o Objeto Achado pelo ID
+      description: Operacao para expirar o tempo em que pode ser encontrado o dono do Objeto Achado pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/expirou_id_body'
+        required: true
+      responses:
+        "200":
+          description: Dono do Objeto achado encontrado
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/adicionar_possivel_dono/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Adicionar possivel dono ao objeto achado pelo o ID
+      description: Adicionar possivel dono ao objeto achado pelo o ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/adicionar_possivel_dono_id_body'
+        required: true
+      responses:
+        "200":
+          description: possivel dono do Objeto Achado adicionado
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/comprado/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Dar como comprado Objeto Achado pelo o ID
+      description: Dar como comprado Objeto Achado pelo o ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/comprado_id_body'
+        required: true
+      responses:
+        "200":
+          description: Objeto Achado comprado
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/emLeilao/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Colocar Objeto Achado em leilao pelo o ID
+      description: Colocar Objeto Achado em leilao pelo o ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/emLeilao_id_body'
+        required: true
+      responses:
+        "200":
+          description: Objeto Achado em leilao
+        "404":
+          description: objeto não encontrado
+  /objeto_achado/tirarLeilao/{id}:
+    patch:
+      tags:
+      - objeto_achado
+      summary: Retirar Objeto Achado de leilao pelo o ID
+      description: Retirar Objeto Achado de leilao pelo o ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tirarLeilao_id_body'
+        required: true
+      responses:
+        "200":
+          description: Objeto Achado retirado de leilao
+        "404":
+          description: objeto não encontrado
+  /categoria:
+    get:
+      tags:
+      - categoria
+      summary: Get todas Categorias
+      description: Operacao para encontrar todas as categorias
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: nome
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Categorias encontradas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categoria'
+        "404":
+          description: Categoria não encontrada
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - categoria
+      summary: Criar Categoria
+      description: criar categoria
+      requestBody:
+        description: estrutura categoria
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/categoria'
+        required: true
+      responses:
+        "201":
+          description: categoria criada
+        "400":
+          description: dados inválidos
+  /categoria/{id}:
+    get:
+      tags:
+      - categoria
+      summary: Get categoria pelo ID
+      description: Operacao para encontrar categoria pelo o id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: objeto encontrado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/categoria'
+        "404":
+          description: Categoria não encontrada
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - categoria
+      summary: Apagar Categoria pelo ID
+      description: Apagar uma Categoria
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Categoria apagada
+        "404":
+          description: Categoria não encontrada
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - categoria
+      summary: Atualizar Categoria pelo ID
+      description: Operacao para atualizar Categoria
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: nome
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Dados de categoria atualizados
+        "404":
+          description: Categoria não encontrada
+  /subcategoria:
+    get:
+      tags:
+      - subcategoria
+      summary: Get todas Subcategorias
+      description: Operacao para encontrar todas as subcategorias
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: nome
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: detalhes
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: id_categoria
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Subcategorias encontradas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subcategoria'
+        "404":
+          description: Subcategoria não encontrada
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - subcategoria
+      summary: Criar Subcategoria
+      description: criar subcategoria
+      requestBody:
+        description: estrutura subcategoria
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/subcategoria'
+        required: true
+      responses:
+        "201":
+          description: subcategoria criada
+        "400":
+          description: dados inválidos
+  /subcategoria/{id}:
+    get:
+      tags:
+      - subcategoria
+      summary: Get subcategoria pelo ID
+      description: Operacao para encontrar subcategoria pelo o id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: subcategoria encontrada
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/subcategoria'
+        "404":
+          description: Subcategoria não encontrada
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - subcategoria
+      summary: Apagar Subcategoria pelo ID
+      description: Apagar uma Subcategoria
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Subcategoria apagada
+        "404":
+          description: Subcategoria não encontrada
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - subcategoria
+      summary: Atualizar Subcategoria pelo ID
+      description: Operacao para atualizar Subcategoria
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: nome
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: detalhes
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Dados de subcategoria atualizados
+        "404":
+          description: Subcategoria não encontrada
+  /local:
+    get:
+      tags:
+      - local
+      summary: Get todos Locais
+      description: Operacao para encontrar todss os locais
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: pais
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: distrito
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: municipio
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: freguesia
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: rua
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: codigo_postal
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: numero_porta
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Locais encontrados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/local'
+        "404":
+          description: local não encontrada
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - local
+      summary: Criar novo Local
+      description: Operacao para criar novo local
+      requestBody:
+        description: estrututa de um local
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/local'
+        required: true
+      responses:
+        "201":
+          description: local adicionado
+        "400":
+          description: dados inválidos
+  /local/{id}:
+    get:
+      tags:
+      - local
+      summary: Get local pelo ID
+      description: Get local pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: local encontrado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/local'
+        "404":
+          description: Local não encontrado
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - local
+      summary: Apagar local pelo ID
+      description: Apagar local pelo ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: local apagada
+        "404":
+          description: local não encontrado
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - local
+      summary: Atualizar local pelo ID
+      description: Operacao para atualizar local com o ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: pais
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: distrito
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: municipio
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: freguesia
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: rua
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: codigo_postal
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: numero_porta
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: local atualizado
+        "404":
+          description: local não encontrado
+  /posto:
+    get:
+      tags:
+      - posto
+      summary: Get todos os Postos
+      description: Procurar todos os postos
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_local
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: postos encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/posto'
+        "404":
+          description: Posto não encontrado
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - posto
+      summary: Criar um Posto
+      description: criar um posto
+      requestBody:
+        description: estrutura de um posto
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/posto'
+        required: true
+      responses:
+        "201":
+          description: posto criado
+        "400":
+          description: dados inválidos
+  /posto/{id}:
+    get:
+      tags:
+      - posto
+      summary: Get Posto pelo ID
+      description: procurar posto por id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: posto encontrado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/posto'
+        "404":
+          description: Posto não encontrado
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - posto
+      summary: Apagar Posto pelo ID
+      description: Apagar posto
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: posto apagado
+        "404":
+          description: posto não encontrado
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - posto
+      summary: Atualizar Posto pelo ID
+      description: Operacao para atualizar local com o ID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/posto_id_body'
+        required: true
+      responses:
+        "200":
+          description: Posto atualizado
+        "404":
+          description: Posto não encontrado
+  /leilao:
+    get:
+      tags:
+      - leilao
+      summary: Get todos os leiloes
+      description: Procurar todos os leiloes
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_objeto
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: estado
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: inicio
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: duracao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: preco_inicial
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_licitacao_atual
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: leiloes encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/leilao'
+        "404":
+          description: Leilao não encontrado
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - leilao
+      summary: Criar novo Leilao
+      description: criar leilao
+      requestBody:
+        description: estrutura de um leilao
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/leilao'
+        required: true
+      responses:
+        "201":
+          description: leilao adicionado
+        "400":
+          description: dados inválidos
+  /leilao/{id}:
+    get:
+      tags:
+      - leilao
+      summary: Get leilao pelo ID
+      description: Procurar leilao por id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: leilao encontrado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/leilao'
+        "404":
+          description: Leilao não encontrado
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - leilao
+      summary: Apagar Leilao pelo ID
+      description: Apagar leilao
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: leilao apagado
+        "404":
+          description: leilao não encontrado
+        "500":
+          description: Erro de servidor
+  /leilao/estado/{id}:
+    patch:
+      tags:
+      - leilao
+      summary: Atualizar Estado do Leilao pelo ID
+      description: Operacao para editar estado do leilao
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/estado_id_body'
+        required: true
+      responses:
+        "200":
+          description: estado do leilao atualizado
+        "404":
+          description: leilao não encontrado
+  /leilao/licitacao_atual/{id}:
+    patch:
+      tags:
+      - leilao
+      summary: Atualizar licitacao atual do Leilao pelo ID
+      description: Operacao para editar estado do leilao
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/licitacao_atual_id_body'
+        required: true
+      responses:
+        "200":
+          description: licitacao atual do leilao atualizada
+        "404":
+          description: leilao não encontrado
+  /licitacao:
+    get:
+      tags:
+      - licitacao
+      summary: Get todas licitacoes
+      description: Procurar todas licitacoes pelo ID
+      parameters:
+      - name: id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_leilao
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: id_licitante
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: data
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: montante
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: licitacoes encontradas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/licitacao'
+        "404":
+          description: Licitacao não encontrada
+        "500":
+          description: Erro de servidor
+    post:
+      tags:
+      - licitacao
+      summary: Criar nova Licitacao
+      description: criar licitacao
+      requestBody:
+        description: estrutura de uma licitacao
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/licitacao'
+        required: true
+      responses:
+        "201":
+          description: comparacao adicionada
+        "400":
+          description: dados inválidos
+  /licitacao/{id}:
+    get:
+      tags:
+      - licitacao
+      summary: Get Licitacao pelo ID
+      description: Procura licitacao por id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: licitacao encontrada
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/licitacao'
+        "404":
+          description: Licitacao não encontrada
+        "500":
+          description: Erro de servidor
+    delete:
+      tags:
+      - licitacao
+      summary: Apagar Licitacao pelo ID
+      description: Apagar licitacao
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: licitacao apagada
+        "404":
+          description: licitacao não encontrada
+        "500":
+          description: Erro de servidor
+    patch:
+      tags:
+      - licitacao
+      summary: Atualizar montante da licitacao pelo ID
+      description: Operacao para editar montante da licitacao
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/licitacao_id_body'
+        required: true
+      responses:
+        "200":
+          description: montante da licitacao atualizado
+        "404":
+          description: licitacao não encontrada
+components:
+  schemas:
+    utilizador:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        mail:
+          type: string
+        nome:
+          type: string
+        password:
+          type: string
+        conta_ativa:
+          type: boolean
+        tipo_conta:
+          type: string
+    admin:
+      allOf:
+      - $ref: '#/components/schemas/utilizador'
+      - type: object
+        properties:
+          genero:
+            type: string
+          ano_nascimento:
+            type: string
+          morada:
+            type: string
+          nif:
+            type: string
+          identificacao_civil:
+            type: string
+          telemovel:
+            type: string
+    conta_civil:
+      allOf:
+      - $ref: '#/components/schemas/utilizador'
+      - type: object
+        properties:
+          genero:
+            type: string
+          ano_nascimento:
+            type: string
+          morada:
+            type: string
+          nif:
+            type: string
+          identificacao_civil:
+            type: string
+          telemovel:
+            type: string
+    conta_policia:
+      allOf:
+      - $ref: '#/components/schemas/utilizador'
+      - type: object
+        properties:
+          id_interno:
+            type: integer
+          posto_id:
+            type: integer
+    objeto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        tipo:
+          type: string
+        descricao:
+          type: string
+        id_categoria:
+          type: integer
+    objeto_perdido:
+      allOf:
+      - $ref: '#/components/schemas/objeto'
+      - type: object
+        properties:
+          encontrado:
+            type: boolean
+          recebido:
+            type: boolean
+          id_dono:
+            type: integer
+          id_local_perdido:
+            type: integer
+          intervalo_data_perdido:
+            type: array
+            items:
+              type: string
+    objeto_achado:
+      allOf:
+      - $ref: '#/components/schemas/objeto'
+      - type: object
+        properties:
+          devolvido:
+            type: boolean
+          encontrado_dono:
+            type: boolean
+          id_pessoa:
+            type: string
+          id_local_achado:
+            type: integer
+          intervalo_data_achado:
+            type: array
+            items:
+              type: string
+          data_expira:
+            type: string
+          expirou:
+            type: boolean
+          id_possivel_donos:
+            type: array
+            items:
+              type: integer
+          comprado:
+            type: boolean
+          emLeilao:
+            type: boolean
+    categoria:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+    subcategoria:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        id_categoria:
+          type: integer
+        detalhes:
+          type: array
+          items:
+            type: string
+    local:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        pais:
+          type: string
+        distrito:
+          type: string
+        municipio:
+          type: string
+        freguesia:
+          type: string
+        rua:
+          type: string
+        codigo_postal:
+          type: string
+        numero_porta:
+          type: string
+    posto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        id_local:
+          type: integer
+    leilao:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        id_objeto:
+          type: integer
+        estado:
+          type: integer
+        inicio:
+          type: string
+        duracao:
+          type: integer
+        preco_inicial:
+          type: integer
+        id_licitacao_atual:
+          type: integer
+    licitacao:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+        id_licitante:
+          type: integer
+        id_leilao:
+          type: integer
+        data:
+          type: string
+        montante:
+          type: integer
+    ativar_id_body:
+      type: object
+      properties:
+        conta_ativa:
+          type: boolean
+    desativar_id_body:
+      type: object
+      properties:
+        conta_ativa:
+          type: boolean
+    inline_response_200:
+      oneOf:
+      - $ref: '#/components/schemas/objeto_perdido'
+      - $ref: '#/components/schemas/objeto_achado'
+    encontrado_id_body:
+      type: object
+      properties:
+        encontrado:
+          type: boolean
+    recebido_id_body:
+      type: object
+      properties:
+        recebido:
+          type: boolean
+    devolvido_id_body:
+      type: object
+      properties:
+        devolvido:
+          type: boolean
+    encontrado_dono_id_body:
+      type: object
+      properties:
+        encontrado_dono:
+          type: boolean
+    expirou_id_body:
+      type: object
+      properties:
+        expirou:
+          type: boolean
+    adicionar_possivel_dono_id_body:
+      type: object
+      properties:
+        possivel_dono:
+          type: array
+          items:
+            type: integer
+    comprado_id_body:
+      type: object
+      properties:
+        comprado:
+          type: boolean
+    emLeilao_id_body:
+      type: object
+      properties:
+        emLeilao:
+          type: boolean
+    tirarLeilao_id_body:
+      type: object
+      properties:
+        emLeilao:
+          type: boolean
+    posto_id_body:
+      type: object
+      properties:
+        id_local:
+          type: integer
+    estado_id_body:
+      type: object
+      properties:
+        estado:
+          type: integer
+    licitacao_atual_id_body:
+      type: object
+      properties:
+        id_licitacao_atual:
+          type: integer
+    licitacao_id_body:
+      type: object
+      properties:
+        montante:
+          type: integer

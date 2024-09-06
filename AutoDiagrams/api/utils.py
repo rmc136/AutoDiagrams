@@ -3,12 +3,11 @@ from graphviz import Digraph
 import os
 from .models import Diagram
 from django.core.files.base import ContentFile
-
-
 from graphviz import Digraph
 import yaml
 from django.core.files.base import ContentFile
 import os
+
 
 def get_EA_diagram(yaml_file):
     # Read file content if it's a FileField
@@ -22,12 +21,12 @@ def get_EA_diagram(yaml_file):
 
     # Initialize Graphviz Digraph object
     dot = Digraph(format='png')
-    dot.attr(rankdir='LR', nodesep='0.75', ranksep='0.75')
+    dot.attr(rankdir='LR', nodesep='1', ranksep='1')
 
     # Get classes and their attributes
     classes = get_classes(yaml_data)
     class_attributes = {cls: get_attributes(yaml_data, cls) for cls in classes}
-
+    
     # Create nodes for each class and its attributes
     for class_name, attrs in class_attributes.items():
         # Add the class node

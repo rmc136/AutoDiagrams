@@ -69,6 +69,9 @@ class DeleteDiagramView(APIView):
         except Diagram.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
+def usage_toturial(request):
+    return render(request, 'usage_tutorial.html')
+
 def upload_yaml_view(request):
     if request.method == 'POST':
         form = YAMLUploadForm(request.POST, request.FILES)

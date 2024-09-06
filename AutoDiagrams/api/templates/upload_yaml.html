@@ -1,23 +1,52 @@
-<!-- api/templates/upload_yaml.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload YAML File</title>
+    <title>Upload File</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: 0;
+            border-radius: 10px 10px 0 0;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .intro-text {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="text-center">Upload a YAML File</h2>
+                        <h2 class="text-center">AutoDiagrams</h2>
                     </div>
                     <div class="card-body">
+                        <div class="intro-text">
+                            <p class="lead">
+                                Welcome to the AutoDiagrams file upload page. This tool allows you to upload files (yaml, yml, json and xml) to create a Entity Relationship diagram automatically. 
+                                <a href="{% url 'usage_tutorial' %}" class="btn btn-link">Learn more about how to use this tool</a>.
+                            </p>
+                        </div>
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-group">

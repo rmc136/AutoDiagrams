@@ -1,0 +1,468 @@
+digraph {
+	utilizador
+	utilizador_id
+	utilizador -> utilizador_id
+	utilizador_mail
+	utilizador -> utilizador_mail
+	utilizador_nome
+	utilizador -> utilizador_nome
+	utilizador_conta_ativa
+	utilizador -> utilizador_conta_ativa
+	utilizador_tipo_conta
+	utilizador -> utilizador_tipo_conta
+	utilizador_id
+	utilizador -> utilizador_id
+	utilizador_id
+	utilizador -> utilizador_id
+	utilizador_id
+	utilizador -> utilizador_id
+	utilizador_id
+	utilizador -> utilizador_id
+	admin
+	admin_id
+	admin -> admin_id
+	admin_conta_ativa
+	admin -> admin_conta_ativa
+	admin_nome
+	admin -> admin_nome
+	admin_genero
+	admin -> admin_genero
+	admin_ano_nascimento
+	admin -> admin_ano_nascimento
+	admin_morada
+	admin -> admin_morada
+	admin_nif
+	admin -> admin_nif
+	admin_identificacao_civil
+	admin -> admin_identificacao_civil
+	admin_telemovel
+	admin -> admin_telemovel
+	admin_id
+	admin -> admin_id
+	"admin_Nova password"
+	admin -> "admin_Nova password"
+	admin_nome
+	admin -> admin_nome
+	admin_genero
+	admin -> admin_genero
+	admin_ano_nascimento
+	admin -> admin_ano_nascimento
+	admin_morada
+	admin -> admin_morada
+	admin_nif
+	admin -> admin_nif
+	admin_identificacao_civil
+	admin -> admin_identificacao_civil
+	admin_telemovel
+	admin -> admin_telemovel
+	conta_civil
+	conta_civil_id
+	conta_civil -> conta_civil_id
+	conta_civil_conta_ativa
+	conta_civil -> conta_civil_conta_ativa
+	conta_civil_nome
+	conta_civil -> conta_civil_nome
+	conta_civil_genero
+	conta_civil -> conta_civil_genero
+	conta_civil_ano_nascimento
+	conta_civil -> conta_civil_ano_nascimento
+	conta_civil_morada
+	conta_civil -> conta_civil_morada
+	conta_civil_nif
+	conta_civil -> conta_civil_nif
+	conta_civil_identificacao_civil
+	conta_civil -> conta_civil_identificacao_civil
+	conta_civil_telemovel
+	conta_civil -> conta_civil_telemovel
+	conta_civil_id
+	conta_civil -> conta_civil_id
+	conta_civil_id
+	conta_civil -> conta_civil_id
+	"conta_civil_Nova password"
+	conta_civil -> "conta_civil_Nova password"
+	conta_civil_nome
+	conta_civil -> conta_civil_nome
+	conta_civil_genero
+	conta_civil -> conta_civil_genero
+	conta_civil_ano_nascimento
+	conta_civil -> conta_civil_ano_nascimento
+	conta_civil_morada
+	conta_civil -> conta_civil_morada
+	conta_civil_nif
+	conta_civil -> conta_civil_nif
+	conta_civil_identificacao_civil
+	conta_civil -> conta_civil_identificacao_civil
+	conta_civil_telemovel
+	conta_civil -> conta_civil_telemovel
+	conta_policia
+	conta_policia_id
+	conta_policia -> conta_policia_id
+	conta_policia_conta_ativa
+	conta_policia -> conta_policia_conta_ativa
+	conta_policia_nome
+	conta_policia -> conta_policia_nome
+	conta_policia_id_interno
+	conta_policia -> conta_policia_id_interno
+	conta_policia_posto_id
+	conta_policia -> conta_policia_posto_id
+	conta_policia_id
+	conta_policia -> conta_policia_id
+	conta_policia_id
+	conta_policia -> conta_policia_id
+	conta_policia_password
+	conta_policia -> conta_policia_password
+	conta_policia_nome
+	conta_policia -> conta_policia_nome
+	conta_policia_id_interno
+	conta_policia -> conta_policia_id_interno
+	conta_policia_posto_id
+	conta_policia -> conta_policia_posto_id
+	objeto
+	objeto_id
+	objeto -> objeto_id
+	objeto_tipo
+	objeto -> objeto_tipo
+	objeto_descricao
+	objeto -> objeto_descricao
+	objeto_id_categoria
+	objeto -> objeto_id_categoria
+	objeto_id
+	objeto -> objeto_id
+	objeto_id
+	objeto -> objeto_id
+	objeto_perdido
+	objeto_perdido_id
+	objeto_perdido -> objeto_perdido_id
+	objeto_perdido_tipo
+	objeto_perdido -> objeto_perdido_tipo
+	objeto_perdido_descricao
+	objeto_perdido -> objeto_perdido_descricao
+	objeto_perdido_id_categoria
+	objeto_perdido -> objeto_perdido_id_categoria
+	objeto_perdido_encontrado
+	objeto_perdido -> objeto_perdido_encontrado
+	objeto_perdido_devolvido
+	objeto_perdido -> objeto_perdido_devolvido
+	objeto_perdido_id_dono
+	objeto_perdido -> objeto_perdido_id_dono
+	objeto_perdido_id_local_perdido
+	objeto_perdido -> objeto_perdido_id_local_perdido
+	objeto_perdido_intervalo_data_perdido
+	objeto_perdido -> objeto_perdido_intervalo_data_perdido
+	objeto_perdido_id
+	objeto_perdido -> objeto_perdido_id
+	objeto_perdido_descricao
+	objeto_perdido -> objeto_perdido_descricao
+	objeto_perdido_id_categoria
+	objeto_perdido -> objeto_perdido_id_categoria
+	objeto_perdido_id_local_perdido
+	objeto_perdido -> objeto_perdido_id_local_perdido
+	objeto_perdido_intervalo_data_perdido
+	objeto_perdido -> objeto_perdido_intervalo_data_perdido
+	objeto_perdido_id
+	objeto_perdido -> objeto_perdido_id
+	objeto_perdido_id
+	objeto_perdido -> objeto_perdido_id
+	objeto_achado
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_tipo
+	objeto_achado -> objeto_achado_tipo
+	objeto_achado_descricao
+	objeto_achado -> objeto_achado_descricao
+	objeto_achado_id_categoria
+	objeto_achado -> objeto_achado_id_categoria
+	objeto_achado_encontrado_dono
+	objeto_achado -> objeto_achado_encontrado_dono
+	objeto_achado_devolvido
+	objeto_achado -> objeto_achado_devolvido
+	objeto_achado_id_pessoa
+	objeto_achado -> objeto_achado_id_pessoa
+	objeto_achado_id_local_achado
+	objeto_achado -> objeto_achado_id_local_achado
+	objeto_achado_intervalo_data_achado
+	objeto_achado -> objeto_achado_intervalo_data_achado
+	objeto_achado_data_expira
+	objeto_achado -> objeto_achado_data_expira
+	objeto_achado_expirou
+	objeto_achado -> objeto_achado_expirou
+	objeto_achado_id_possivel_donos
+	objeto_achado -> objeto_achado_id_possivel_donos
+	objeto_achado_comprado
+	objeto_achado -> objeto_achado_comprado
+	objeto_achado_inLeilao
+	objeto_achado -> objeto_achado_inLeilao
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_descricao
+	objeto_achado -> objeto_achado_descricao
+	objeto_achado_id_civil_pessoa
+	objeto_achado -> objeto_achado_id_civil_pessoa
+	objeto_achado_id_local_achado
+	objeto_achado -> objeto_achado_id_local_achado
+	objeto_achado_intervalo_data_achado
+	objeto_achado -> objeto_achado_intervalo_data_achado
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	objeto_achado_id
+	objeto_achado -> objeto_achado_id
+	categoria
+	categoria_id
+	categoria -> categoria_id
+	categoria_nome
+	categoria -> categoria_nome
+	categoria_id
+	categoria -> categoria_id
+	categoria_id
+	categoria -> categoria_id
+	categoria_id
+	categoria -> categoria_id
+	categoria_nome
+	categoria -> categoria_nome
+	subcategoria
+	subcategoria_id
+	subcategoria -> subcategoria_id
+	subcategoria_nome
+	subcategoria -> subcategoria_nome
+	subcategoria_detalhes
+	subcategoria -> subcategoria_detalhes
+	subcategoria_id_categoria
+	subcategoria -> subcategoria_id_categoria
+	subcategoria_id
+	subcategoria -> subcategoria_id
+	subcategoria_id
+	subcategoria -> subcategoria_id
+	subcategoria_id
+	subcategoria -> subcategoria_id
+	subcategoria_nome
+	subcategoria -> subcategoria_nome
+	subcategoria_detalhes
+	subcategoria -> subcategoria_detalhes
+	local
+	local_id
+	local -> local_id
+	local_pais
+	local -> local_pais
+	local_distrito
+	local -> local_distrito
+	local_municipio
+	local -> local_municipio
+	local_freguesia
+	local -> local_freguesia
+	local_rua
+	local -> local_rua
+	local_codigo_postal
+	local -> local_codigo_postal
+	local_numero_porta
+	local -> local_numero_porta
+	local_id
+	local -> local_id
+	local_id
+	local -> local_id
+	local_id
+	local -> local_id
+	local_pais
+	local -> local_pais
+	local_distrito
+	local -> local_distrito
+	local_municipio
+	local -> local_municipio
+	local_freguesia
+	local -> local_freguesia
+	local_rua
+	local -> local_rua
+	local_codigo_postal
+	local -> local_codigo_postal
+	local_numero_porta
+	local -> local_numero_porta
+	posto
+	posto_id
+	posto -> posto_id
+	posto_id_local
+	posto -> posto_id_local
+	posto_id
+	posto -> posto_id
+	posto_id
+	posto -> posto_id
+	posto_id
+	posto -> posto_id
+	leilao
+	leilao_id
+	leilao -> leilao_id
+	leilao_id_objeto
+	leilao -> leilao_id_objeto
+	leilao_estado
+	leilao -> leilao_estado
+	leilao_inicio
+	leilao -> leilao_inicio
+	leilao_duracao
+	leilao -> leilao_duracao
+	leilao_preco_inicial
+	leilao -> leilao_preco_inicial
+	leilao_id_licitacao_atual
+	leilao -> leilao_id_licitacao_atual
+	leilao_id
+	leilao -> leilao_id
+	leilao_id
+	leilao -> leilao_id
+	leilao_id
+	leilao -> leilao_id
+	leilao_id
+	leilao -> leilao_id
+	licitacao
+	licitacao_id
+	licitacao -> licitacao_id
+	licitacao_id_leilao
+	licitacao -> licitacao_id_leilao
+	licitacao_id_licitante
+	licitacao -> licitacao_id_licitante
+	licitacao_data
+	licitacao -> licitacao_data
+	licitacao_montante
+	licitacao -> licitacao_montante
+	licitacao_id
+	licitacao -> licitacao_id
+	licitacao_id
+	licitacao -> licitacao_id
+	licitacao_id
+	licitacao -> licitacao_id
+	Get -> todos [label=dobj]
+	do -> ID [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> mail [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> nome [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> conta [label=nsubj]
+	do -> ativa [label=dobj]
+	do -> ou [label=dobj]
+	do -> "não" [label=dobj]
+	do -> conta [label=nsubj]
+	do -> utilizador [label=dobj]
+	pelo -> utilizador [label=nsubj]
+	pelo -> i [label=dobj]
+	pelo -> utilizador [label=nsubj]
+	pelo -> i [label=dobj]
+	todos -> admins [label=dobj]
+	do -> nome [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> "género" [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> nascimento [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> morada [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> NIF [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> civil [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> "telemóvel" [label=nsubj]
+	do -> utilizador [label=dobj]
+	nome -> Novo [label=nsubj]
+	do -> "género" [label=nsubj]
+	admin -> Novo [label=nsubj]
+	admin -> morada [label=nsubj]
+	do -> NIF [label=nsubj]
+	admin -> Nova [label=nsubj]
+	do -> Novo [label=nsubj]
+	as -> civis [label=pobj]
+	do -> nome [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> "género" [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> nascimento [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> morada [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> NIF [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> civil [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> "telemóvel" [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> nome [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> "género" [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> Novo [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> morada [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> NIF [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> Nova [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> Novo [label=nsubj]
+	do -> utilizador [label=dobj]
+	as -> policias [label=pobj]
+	do -> nome [label=nsubj]
+	do -> utilizador [label=dobj]
+	do -> interno [label=nsubj]
+	do -> policia [label=dobj]
+	do -> posto [label=nsubj]
+	do -> policia [label=dobj]
+	criar -> nova [label=dobj]
+	dados -> policia [label=dobj]
+	do -> nome [label=nsubj]
+	do -> utilizador [label=dobj]
+	todas -> encontrar [label=nsubj]
+	as -> pessoas [label=pobj]
+	todos -> Procurar [label=nsubj]
+	todos -> parametros [label=dobj]
+	pelo -> atualizar [label=nsubj]
+	pelo -> objeto_perdido [label=nsubj]
+	pelo -> ID [label=dobj]
+	pelo -> Operacao [label=nsubj]
+	pelo -> ID [label=dobj]
+	pelo -> Operacao [label=nsubj]
+	recebido -> como [label=nsubj]
+	todos -> Procurar [label=nsubj]
+	todos -> parametros [label=dobj]
+	do -> dados [label=nsubj]
+	recebido -> Operacao [label=nsubj]
+	recebido -> como [label=nsubj]
+	pelo -> dono [label=nsubj]
+	pelo -> Achado [label=nsubj]
+	pelo -> ID [label=dobj]
+	que -> expirar [label=nsubj]
+	expirar -> o [label=dobj]
+	tempo -> em [label=dobj]
+	que -> dono [label=dobj]
+	pelo -> Achado [label=nsubj]
+	pelo -> ID [label=dobj]
+	comprado -> como [label=nsubj]
+	pelo -> ID [label=dobj]
+	leilao -> em [label=nsubj]
+	leilao -> pelo [label=dobj]
+	leilao -> ID [label=dobj]
+	as -> categorias [label=pobj]
+	Apagar -> uma [label=nsubj]
+	as -> subcategorias [label=pobj]
+	Apagar -> uma [label=nsubj]
+	Get -> pelo [label=dobj]
+	Apagar -> ID [label=dobj]
+	todos -> Procurar [label=nsubj]
+	todos -> postos [label=dobj]
+	por -> i [label=dobj]
+	todos -> Procurar [label=nsubj]
+	todos -> leiloes [label=dobj]
+	leilao -> Procurar [label=nsubj]
+	por -> i [label=dobj]
+	do -> estado [label=nsubj]
+	do -> leilao [label=dobj]
+	do -> estado [label=nsubj]
+	do -> leilao [label=dobj]
+	todas -> Procurar [label=nsubj]
+	todas -> licitacoes [label=dobj]
+	todas -> ID [label=dobj]
+}
